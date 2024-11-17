@@ -6,9 +6,9 @@ import { FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
     return (
-        <footer className="bg-black flex flex-row items-center justify-between py-6 px-8 xl:px-14">
+        <footer className="bg-black flex flex-row items-center justify-between py-10 px-8 xl:px-14">
             <div className="flex flex-col gap-1">
-                <LogoIcon width={220} fill="white"/>
+                <LogoIcon width={250} fill="white"/>
                 <p className="text-white font-medium text-xs md:text-sm">SkyZero &copy; 2024 - Todos os direitos reservados</p>
             </div>
             <div className="flex flex-col items-center text-white gap-1">
