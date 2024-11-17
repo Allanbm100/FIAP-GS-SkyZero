@@ -11,7 +11,7 @@ import { IoMenu } from "react-icons/io5";
 export const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [logged] = useState(true);
+    const [logged] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
