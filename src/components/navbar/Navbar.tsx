@@ -50,7 +50,7 @@ export const Navbar = () => {
                         />
                     </Link>
                 ) : (
-                    <Link href={"/login"} className="hidden lg:flex items-center py-px px-2 border-2 rounded-xl border-[#079b11]">
+                    <Link href={"/login"} className="hidden lg:flex items-center py-px px-4 border-2 rounded-xl border-[#079b11]">
                         <div className="flex items-center justify-center">
                             <FaUserCircle
                                 className="w-[35px] h-[35px]"

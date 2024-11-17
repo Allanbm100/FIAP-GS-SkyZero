@@ -29,7 +29,7 @@ export default function Login() {
                         />
                         <div className="flex flex-row justify-between items-center">
                             <Link href={"/"} className="text-[#079b11] underline text-sm">Esqueci a minha senha</Link>
-                            <button type="button" className="py-2 px-6 border-2 border-[#079b11] rounded-md text-sm font-bold text-[#079b11]">
+                            <button type="button" className="py-2 px-6 border-2 border-[#079b11] rounded-md font-bold text-[#079b11]">
                                 Entrar
                             </button>
                         </div>

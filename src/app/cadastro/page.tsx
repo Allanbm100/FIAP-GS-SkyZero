@@ -40,7 +40,7 @@ export default function Cadastro() {
                             className="w-full border-2 rounded-xl p-3 mb-8"
                         />
                         <div className="flex flex-row justify-end items-center">
-                            <button type="button" className="py-2 px-6 border-2 border-[#079b11] rounded-md text-sm font-bold text-[#079b11]">
+                            <button type="button" className="py-2 px-6 border-2 border-[#079b11] rounded-md font-bold text-[#079b11]">
                                 Cadastrar
                             </button>
                         </div>
