@@ -16,7 +16,7 @@ export default function Cadastro() {
                     <form className="w-full">
                         <input
                             type="text"
-                            placeholder="Nome Completo"
+                            placeholder="Nome da empresa"
                             className="w-full border-2 rounded-xl p-3 mb-4"
                         />
                         <input
@@ -26,7 +26,7 @@ export default function Cadastro() {
                         />
                         <input
                             type="text"
-                            placeholder="CPF"
+                            placeholder="CNPJ"
                             className="w-full border-2 rounded-xl p-3 mb-4"
                         />
                         <input
