@@ -14,27 +14,25 @@ export default function Login() {
                 <Link href={"/"} className="flex w-fit mb-12">
                     <PiKeyReturnFill size={40} color="079b11" />
                 </Link>
-                <div className="flex flex-col mb-24">
-                    <h1 className="text-[#079b11] font-bold text-4xl mb-12">Acessar Conta</h1>
-                    <form className="w-full">
-                        <input
-                            type="text"
-                            placeholder="CPF"
-                            className="w-full border-2 rounded-xl p-3 mb-4"
-                        />
-                        <input
-                            type="text"
-                            placeholder="Senha"
-                            className="w-full border-2 rounded-xl p-3 mb-8"
-                        />
-                        <div className="flex flex-row justify-between items-center">
-                            <Link href={"/"} className="text-[#079b11] underline text-sm">Esqueci a minha senha</Link>
-                            <button type="button" className="py-2 px-6 border-2 border-[#079b11] rounded-md font-bold text-[#079b11]">
-                                Entrar
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <h1 className="text-[#079b11] font-bold text-4xl mb-12">Acessar Conta</h1>
+                <form className="w-full flex flex-col mb-24">
+                    <input
+                        type="text"
+                        placeholder="CPF"
+                        className="w-full border-2 rounded-xl p-3 mb-4"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Senha"
+                        className="w-full border-2 rounded-xl p-3 mb-8"
+                    />
+                    <div className="flex flex-row justify-between items-center">
+                        <Link href={"/"} className="text-[#079b11] underline text-sm">Esqueci a minha senha</Link>
+                        <button type="button" className="py-2 px-6 border-2 border-[#079b11] rounded-md font-bold text-[#079b11]">
+                            Entrar
+                        </button>
+                    </div>
+                </form>
                 <div className="text-left">
                     <p className="text-sm">Não tem uma conta SkyZero?</p>
                     <Link href={"/cadastro"} className="font-bold text-[#079b11]">Crie seu cadastro!</Link>

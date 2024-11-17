@@ -18,7 +18,7 @@ export const Navbar = () => {
     };
 
     const navLinks = [
-        { href: "/integrantes", label: "Integrantes" },
+        { href: "/#integrantes", label: "Integrantes" },
         { href: "/calculadora", label: "Calculadora" },
         { href: "/registros", label: "Registros" },
     ];

@@ -23,7 +23,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href='./favicon.png' />
       </head>
-
       <body className={rubik.className}>{children}</body>
     </html>
   )

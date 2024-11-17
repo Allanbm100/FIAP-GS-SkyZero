@@ -37,7 +37,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="flex flex-col items-center gap-5 py-12">
+      <section className="flex flex-col items-center gap-5 py-20">
         <h1 className="text-3xl font-semibold text-[#079b11] mb-5">Nossos Serviços</h1>
         <ul className="flex flex-col xl:flex-row gap-4">
           <li>
@@ -61,7 +61,7 @@ export default function Home() {
         </ul>
       </section>
       <div className="bg-gray-200 h-1"></div>
-      <section className="flex flex-col items-center gap-5 py-12">
+      <section id="integrantes" className="flex flex-col items-center gap-5 py-20">
         <div className="flex flex-col items-center">
           <h1 className="text-3xl font-semibold text-[#079b11] mb-3">Integrantes</h1>
           <p className="text-gray-500 text-center mb-5">Idealizadores da solução <b>SkyZero</b>.<br />Alunos da FIAP, turma 1TDSPX.</p>
