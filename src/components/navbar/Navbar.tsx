@@ -25,10 +25,10 @@ export const Navbar = () => {
 
     return (
         <nav className="w-full h-20 border-b-4 border-gray-200">
-            <div className="w-full h-full max-w-7xfull m-auto flex flex-wrap justify-between content-center px-6 lg:px-12">
+            <div className="w-full h-full max-w-7xfull m-auto flex flex-wrap justify-between content-center px-8 sm:px-12 lg:px-12">
                 <div className="flex">
-                    <Link href={"/"}>
-                        <LogoIcon width={220} />
+                    <Link className="w-32" href={"/"}>
+                        <LogoIcon />
                     </Link>
 
                     <ul className="hidden lg:flex gap-10 items-center ml-6">
@@ -73,10 +73,10 @@ export const Navbar = () => {
                 </button>
 
                 {isMenuOpen && (
-                    <div className="absolute inset-x-0 top-20 bg-white shadow-lg py-4 flex flex-row gap-8 justify-center lg:hidden z-50">
+                    <div className="absolute inset-x-0 top-20 bg-white shadow-lg py-8 sm:py-4 flex flex-col sm:flex-row gap-10 sm:gap-8 items-center justify-center lg:hidden z-50">
                         <Link
                             href={logged ? "" : "/login"}
-                            className={`flex items-center gap-2 justify-center w-1/6 h-10 border-2 rounded-lg ${logged
+                            className={`flex items-center gap-2 justify-center w-36 sm:w-1/6 h-12 sm:h-10 border-2 rounded-lg ${logged
                                     ? "border-[#079b11] text-[#079b11]"
                                     : "border-[#079b11] text-[#079b11] font-medium"
                                 }`}
@@ -92,7 +92,7 @@ export const Navbar = () => {
                             <Link
                                 key={href}
                                 href={href}
-                                className="flex items-center justify-center w-1/6 h-10 border-2 rounded-lg border-gray-600/80 text-gray-800 text-center"
+                                className="flex items-center justify-center w-36 sm:w-1/6 h-12 sm:h-10 border-2 rounded-lg border-gray-600/80 text-gray-800 text-center"
                             >
                                 {label}
                             </Link>
