@@ -27,7 +27,7 @@ export const Navbar = () => {
         <nav className="w-full h-20 border-b-4 border-gray-200">
             <div className="w-full h-full max-w-7xfull m-auto flex flex-wrap justify-between content-center px-8 sm:px-12 lg:px-12">
                 <div className="flex">
-                    <Link className="w-32" href={"/"}>
+                    <Link className="w-32 sm:w-44" href={"/"}>
                         <LogoIcon />
                     </Link>
 
@@ -44,7 +44,7 @@ export const Navbar = () => {
                 {logged ? (
                     <Link href={""} className="hidden lg:flex items-center">
                         <FaUserCircle
-                            className="w-[35px] h-[35px]"
+                            className="w-[30px] h-[30px]"
                             color="079b11"
                             id="user"
                         />
@@ -53,11 +53,11 @@ export const Navbar = () => {
                     <Link href={"/login"} className="hidden lg:flex items-center py-px px-4 border-2 rounded-xl border-[#079b11]">
                         <div className="flex items-center justify-center">
                             <FaUserCircle
-                                className="w-[35px] h-[35px]"
+                                className="w-[30px] h-[30px]"
                                 color="079b11"
                                 id="user"
                             />
-                            <p className="text-[#079b11] text-[1.2rem] font-medium ml-3">
+                            <p className="text-[#079b11] text-lg font-medium ml-3">
                                 Entrar
                             </p>
                         </div>

@@ -70,7 +70,7 @@ export default function Home() {
                         { name: "Caio Liang", rm: "RM558868", img: fotoCaio, github: "https://github.com/CaioLiang" },
                         { name: "Levi Magni", rm: "RM98276", img: fotoLevi, github: "https://github.com/levmn" }].map((member, index) => (
                             <article key={index} className="flex flex-col items-center gap-2">
-                                <Image src={member.img} alt={`Foto do ${member.name}`} className="border-4 border-[#079b11] rounded-full size-40 sm:size-60" />
+                                <Image src={member.img} alt={`Foto do ${member.name}`} className="border-4 border-[#079b11] rounded-full size-50 sm:size-60" />
                                 <div className="flex flex-col items-center">
                                     <h3 className="text-xl font-bold text-[#079b11]">{member.name}</h3>
                                     <p className="text-base font-normal text-gray-500">{member.rm}</p>
