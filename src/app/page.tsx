@@ -1,9 +1,7 @@
-import { Navbar } from "@/components/navbar/Navbar"
 import { FaCalculator } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
 import { IoPieChartSharp } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa6";
-import { Footer } from "@/components/footer/Footer";
 import backgroundImage from "@/assets/images/section1-wpp.jpg"
 import fotoAllan from "../assets/images/allan.png";
 import fotoCaio from "../assets/images/caio.png";
@@ -13,10 +11,7 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <>
-            <Navbar />
             <main>
-
                 <section className="relative h-[538px] w-full">
                     <div className="absolute inset-0 z-[-1]">
                         <Image
@@ -83,7 +78,5 @@ export default function Home() {
                     </div>
                 </section>
             </main>
-            <Footer />
-        </>
     )
 }

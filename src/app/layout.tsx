@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
+import { UserContextProvider } from '@/context/UserContext';
+import { Footer } from '@/components/footer/Footer';
+import { Navbar } from '@/components/navbar/Navbar';
 import './globals.css'
 
 const rubik = Rubik({
@@ -23,7 +26,17 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href='./favicon.png' />
       </head>
-      <body className={rubik.className}>{children}</body>
+      <body className={rubik.className}>
+        <UserContextProvider>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </UserContextProvider>
+      </body>
     </html>
   )
 }

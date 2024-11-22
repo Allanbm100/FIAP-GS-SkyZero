@@ -5,23 +5,24 @@ import { LogoIcon } from "../logoIcon/LogoIcon"
 import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
-
-
+import { useUserContext } from "@/context/UserContext";
 
 export const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [logged] = useState(false);
+    const { idUsuario } = useUserContext();;
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const navLinks = [
-        { href: "/#integrantes", label: "Integrantes" },
-        { href: "/calculadora", label: "Calculadora" },
-        { href: "/registros", label: "Registros" },
-    ];
+    const navLinks = idUsuario
+        ? [
+              { href: "/#integrantes", label: "Integrantes" },
+              { href: "/calculadora", label: "Calculadora" },
+              { href: "/registros", label: "Registros" },
+          ]
+        : [{ href: "/#integrantes", label: "Integrantes" }];
 
     return (
         <nav className="w-full h-20 border-b-4 border-gray-200">
@@ -41,8 +42,8 @@ export const Navbar = () => {
 
                 </div>
 
-                {logged ? (
-                    <Link href={""} className="hidden lg:flex items-center">
+                {idUsuario ? (
+                    <Link href={"/registros"} className="hidden lg:flex items-center">
                         <FaUserCircle
                             className="w-[30px] h-[30px]"
                             color="079b11"
@@ -75,8 +76,9 @@ export const Navbar = () => {
                 {isMenuOpen && (
                     <div className="absolute inset-x-0 top-20 bg-white shadow-lg py-8 sm:py-4 flex flex-col sm:flex-row gap-10 sm:gap-8 items-center justify-center lg:hidden z-50">
                         <Link
-                            href={logged ? "" : "/login"}
-                            className={`flex items-center gap-2 justify-center w-36 sm:w-1/6 h-12 sm:h-10 border-2 rounded-lg ${logged
+                            href={idUsuario ? "" : "/login"}
+                            className={`flex items-center gap-2 justify-center w-36 sm:w-1/6 h-12 sm:h-10 border-2 rounded-lg 
+                                ${idUsuario
                                     ? "border-[#079b11] text-[#079b11]"
                                     : "border-[#079b11] text-[#079b11] font-medium"
                                 }`}
@@ -86,7 +88,7 @@ export const Navbar = () => {
                                 color="#079b11"
                                 id="user"
                             />
-                            {!logged && <span>Entrar</span>}
+                            {!idUsuario && <span>Entrar</span>}
                         </Link>
                         {navLinks.map(({ href, label }) => (
                             <Link

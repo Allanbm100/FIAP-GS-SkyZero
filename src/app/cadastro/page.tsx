@@ -1,33 +1,25 @@
 "use client"
 
-import { Footer } from "@/components/footer/Footer";
-import { Navbar } from "@/components/navbar/Navbar";
 import { PiKeyReturnFill } from "react-icons/pi";
-import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation"; 
+import Link from "next/link";
 
 export default function Cadastro() {
 
+    const router = useRouter();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [cnpj, setCnpj] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleNameChange = (event: any) => {
-        setName(event.target.value);
-    }
-
-    const handleEmailChange = (event: any) => {
-        setEmail(event.target.value);
-    }
-
-    const handleCnpjChange = (event: any) => {
-        setCnpj(event.target.value);
-    }
-
-    const handlePasswordChange = (event: any) => {
-        setPassword(event.target.value);
-    }
+    const handleNameChange = (event: any) => setName(event.target.value);
+    const handleEmailChange = (event: any) => setEmail(event.target.value);
+    const handleCnpjChange = (event: any) => setCnpj(event.target.value);
+    const handlePasswordChange = (event: any) => setPassword(event.target.value);
+    const handleConfirmPasswordChange = (event: any) => setConfirmPassword(event.target.value);
+    
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
@@ -54,6 +46,11 @@ export default function Cadastro() {
             return;
         }
 
+        if (password !== confirmPassword) {
+            alert("As senhas não coincidem. Por favor, verifique.");
+            return;
+        }
+
         const usuarioData = {
             nomeEmpresa: name,
             email: email,
@@ -64,11 +61,8 @@ export default function Cadastro() {
             }
         };
 
-        console.log("Dados a serem enviados:", JSON.stringify(usuarioData, null, 2));
-
-
         try {
-            const response = await fetch("http://localhost:8080/api/usuario", {
+            const response = await fetch("http://localhost:8080/usuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -77,27 +71,26 @@ export default function Cadastro() {
             });
 
             if (response.ok) {
-                const data = await response.json();
+                const data = await response.text();
                 alert("Usuário cadastrado com sucesso!");
-                console.log(data);
 
                 setName("");
                 setEmail("");
                 setCnpj("");
                 setPassword("");
+                setConfirmPassword("");
+
+                router.push("/login");
             } else {
-                const errorData = await response.json();
-                alert(`Erro ao cadastrar: ${errorData.message}`);
+                const errorData = await response.text();
+                alert(`Erro ao cadastrar: ${errorData}`);
             }
-        } catch (error) {
-            console.error("Erro ao enviar os dados:", error);
-            alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+        } catch (errorData) {
+            alert(`Erro ao cadastrar: ${errorData}`);
         }
     }
 
     return (
-        <>
-            <Navbar />
             <main className="pt-10 pb-20 sm:py-20 px-8 sm:px-24 md:px-40 lg:px-60 xl:px-96">
                 <Link href={"/"} className="flex w-fit mb-12">
                     <PiKeyReturnFill size={40} color="079b11" />
@@ -110,30 +103,36 @@ export default function Cadastro() {
                         type="text"
                         placeholder="Nome da empresa"
                         className="w-full border-2 rounded-xl p-3 mb-4"
+                        value={name}
                         onChange={handleNameChange}
                     />
                     <input
                         type="text"
                         placeholder="E-mail"
                         className="w-full border-2 rounded-xl p-3 mb-4"
+                        value={email}
                         onChange={handleEmailChange}
                     />
                     <input
                         type="text"
                         placeholder="CNPJ"
                         className="w-full border-2 rounded-xl p-3 mb-4"
+                        value={cnpj}
                         onChange={handleCnpjChange}
                     />
                     <input
-                        type="text"
+                        type="password"
                         placeholder="Senha"
                         className="w-full border-2 rounded-xl p-3 mb-4"
+                        value={password}
                         onChange={handlePasswordChange}
                     />
                     <input
-                        type="text"
+                        type="password"
                         placeholder="Confirmar senha"
                         className="w-full border-2 rounded-xl p-3 mb-8"
+                        value={confirmPassword}
+                        onChange={handleConfirmPasswordChange}
                     />
                     <div className="flex sm:justify-end justify-center">
                         <button type="submit" className="py-2 px-6 border-2 border-[#079b11] rounded-md font-bold text-[#079b11]">
@@ -147,7 +146,5 @@ export default function Cadastro() {
                     <Link href={"/login"} className="font-bold text-[#079b11]">Faça login!</Link>
                 </div>
             </main>
-            <Footer />
-        </>
     )
 }
