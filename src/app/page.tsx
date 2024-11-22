@@ -46,6 +46,10 @@ export default function Home() {
                             <IoIosSave size={50} color="079b11" />
                             <p className="text-gray-500">Registros de voos em seu perfil</p>
                         </li>
+                        <li className="flex flex-col items-center gap-2 py-2 w-40 sm:w-80 lg:w-96 xl:w-80 2xl:w-96 border-2 rounded-xl border-[#079b11]">
+                            <IoPieChartSharp size={50} color="079b11" />
+                            <p className="text-gray-500">Gráficos de dispersão e diminuições</p>
+                        </li>
                     </ul>
                 </section>
 
