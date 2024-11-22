@@ -11,7 +11,7 @@ export default function Cadastro() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [cnpj, setCnpj] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setpassword] = useState("");
 
     const handleNameChange = (event: any) => {
         setName(event.target.value);
@@ -26,72 +26,80 @@ export default function Cadastro() {
     }
 
     const handlePasswordChange = (event: any) => {
-        setPassword(event.target.value);
+        setpassword(event.target.value);
     }
 
     const handleSubmit = async (event: any) => {
-        event.preventDefault();
+        event.preventDefault()
 
-        if (name.trim() === "") {
-            alert("Por favor, insira um nome válido.");
-            return;
+        if (name === "") {
+            alert('Por favor, insira um nome válido')
+            return
         }
 
-        const emailRegex = /^[\w-.]+@[\w-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(email)) {
-            alert("Por favor, insira um e-mail válido.");
-            return;
+        if (email === `^[\w-.]+@[\w-]+\.[a-zA-Z]{2,}$`) {
+            alert("Por favor, insira um email válido")
+            return
         }
 
-        const cnpjRegex = /^\d{14}$/;
-        if (!cnpjRegex.test(cnpj.replace(/\D/g, ""))) {
-            alert("Por favor, insira um CNPJ válido.");
-            return;
+        if (cnpj === "[^0-9]") {
+            alert("Por favor, insira um CNPJ válido")
+            return
         }
 
         if (password.length < 8) {
-            alert("A senha deve ter pelo menos 8 caracteres.");
-            return;
+            alert("Por favor, insira uma senha válida")
+            return
         }
 
-        const usuarioData = {
-            nomeEmpresa: name,
-            email: email,
-            cnpj: cnpj,
-            login: {
-                cnpj: cnpj,
-                senha: password,
-            }
-        };
+        const userParams = {
+            nomeEmpresa: `${name}`,
+            email: `${email}`,
+            cnpj: `${cnpj}`, 
+        }
 
-        console.log("Dados a serem enviados:", JSON.stringify(usuarioData, null, 2));
-
+        const loginParams = {
+            login: `${cnpj}`,
+            senha: `${password}`,
+        }
 
         try {
-            const response = await fetch("http://localhost:8080/api/usuario", {
+            // const userResponse = await fetch('http://localhost:8080/usuarios', {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(userParams),
+            // })
+
+            const loginResponse = await fetch('http://localhost:8080/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(usuarioData),
-            });
+                body: JSON.stringify({
+                    login: `${cnpj}`,
+                    senha: `${password}`,
+                }),
+                mode: 'cors',
+                credentials: 'include',
+            })
 
-            if (response.ok) {
-                const data = await response.json();
-                alert("Usuário cadastrado com sucesso!");
-                console.log(data);
+            if (loginResponse.ok) {
 
+                const loginData = await loginResponse.json();
+
+                console.log(loginData);
+                
+                
                 setName("");
                 setEmail("");
                 setCnpj("");
-                setPassword("");
-            } else {
-                const errorData = await response.json();
-                alert(`Erro ao cadastrar: ${errorData.message}`);
+                setpassword("");                
             }
+
         } catch (error) {
-            console.error("Erro ao enviar os dados:", error);
-            alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+            console.error('Erro ao enviar dados:', error);
         }
     }
 
