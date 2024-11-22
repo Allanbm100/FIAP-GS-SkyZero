@@ -146,7 +146,7 @@ export default function Calculadora() {
             {valid === true &&
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 backdrop-blur-sm z-60">
                     <div className="flex flex-col items-center bg-white p-8 rounded-xl shadow-lg">
-                        <p className="text-[#079b11] text-center font-bold text-lg sm:text-2xl mb-6">A emissão do seu voo é de:<br />{emission && (emission * 1000).toFixed(2)} g de Co2</p>
+                        <p className="text-[#079b11] text-center font-bold text-lg sm:text-2xl mb-6">A emissão do seu voo é de:<br />{emission && (emission * 1000000).toFixed(2)} g de Co2</p>
                         <div className="flex gap-4 flex-col sm:flex-row">
                             <button
                                 type="submit"
